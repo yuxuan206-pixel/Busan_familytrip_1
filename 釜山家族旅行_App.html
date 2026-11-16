@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#CAE9FF" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="釜山家族旅行" />
+  <link rel="apple-touch-icon" href="https://placehold.co/180x180/E3F0F8/6992B2?text=BUSAN" />
+  <link rel="icon" type="image/png" href="https://placehold.co/192x192/E3F0F8/6992B2?text=BUSAN" />
+  <title>BUSAN 釜山家族旅行 5天4夜</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: 韓文可愛手寫體 Hi Melody + 完整字集圓潤體 Jua + 連皮吃奇異果字 (Kiwi Maru) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Hi+Melody&family=Jua&family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
+  <!-- 連皮吃奇異果字 (キウイ皮ごと齧る PopRumKiwi Webfont) -->
+  <link rel="stylesheet" href="https://fontsapi.zeoseven.com/712/main/result.css" />
+
+  <style>
+    /* =========================================================
+       中文字體設定：連皮吃奇異果字 (PopRumKiwi-Telop / GitHub Kiwi Maru)
+       韓文字體設定：Hi Melody + Jua (完整支援所有韓文音節不缺字)
+       ========================================================= */
+    @font-face {
+      font-family: 'KiwiMaruGH';
+      src: url('https://cdn.jsdelivr.net/gh/Fontworks-fonts/Kiwi-Maru@master/fonts/ttf/KiwiMaru-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KiwiMaruGH';
+      src: url('https://cdn.jsdelivr.net/gh/Fontworks-fonts/Kiwi-Maru@master/fonts/ttf/KiwiMaru-Medium.ttf') format('truetype');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      /* 清新可愛手帳調色盤 (日系文具高質感配色) */
+      --c-blue-light: #E3F0F8;
+      --c-blue-dark: #89AEC9;
+      --c-yellow: #F4D675;
+      --c-lime: #D0E5C9;
+      --c-red: #F4BABA;
+
+      --font-hand-main: 'PopRumKiwi-Telop', 'Kiwi Maru', 'KiwiMaruGH', 'Hi Melody', 'Jua', sans-serif;
+      --font-hand-kr: 'Hi Melody', 'Jua', sans-serif;
+      --font-hand-en: 'Caveat', 'Hi Melody', cursive;
+      --bg-paper: #FFFFFF;
+      --ink-main: #696055;
+      --ink-muted: #9E9385;
+      --line-grid: rgba(137, 174, 201, 0.25);
+    }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-hand-main);
+      color: var(--ink-main);
+      background-color: var(--c-blue-light);
+      /* 清新淺藍底紋 */
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.58) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.58) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* 主體白紙張質感 */
+    .notebook-shell {
+      background-color: var(--bg-paper);
+      background-image:
+        linear-gradient(var(--line-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-grid) 1px, transparent 1px);
+      background-size: 22px 22px;
+      box-shadow:
+        0 12px 30px rgba(38, 96, 164, 0.12),
+        0 2px 6px rgba(38, 96, 164, 0.06),
+        inset 0 0 0 1.5px var(--c-blue-light);
+      position: relative;
+    }
+
+    /* 左側裝訂孔裝飾 */
+    .binder-holes {
+      position: absolute;
+      left: 8px;
+      top: 24px;
+      bottom: 24px;
+      width: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .binder-hole {
+      width: 11px;
+      height: 11px;
+      border-radius: 9999px;
+      background: var(--c-blue-light);
+      box-shadow: inset 1px 1.5px 3px rgba(137, 174, 201, 0.25), 0 1px 0 rgba(255,255,255,0.9);
+      position: relative;
+    }
+    .binder-hole::after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 3px;
+      width: 12px;
+      height: 4px;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #B1CBE0, #F4F8FB);
+      box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+    }
+
+    /* 模仿手繪螢光筆畫重點效果 */
+    .hl-yellow {
+      background: linear-gradient(104deg, #F4D67500 0.9%, #F4D675E6 2.4%, #F4D67599 94%, #F4D67500 98%);
+      padding: 0.08em 0.35em;
+      margin: 0 -0.1em;
+      border-radius: 6px 3px 5px 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .hl-blue {
+      background: linear-gradient(102deg, #E3F0F800 1%, #E3F0F8E6 2.5%, #E3F0F8B3 94%, #E3F0F800 98%);
+      padding: 0.08em 0.35em;
+      margin: 0 -0.1em;
+      border-radius: 5px 8px 4px 6px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .hl-red {
+      background: linear-gradient(105deg, #F4BABA00 1%, #F4BABAE6 3%, #F4BABAB3 95%, #F4BABA00 98%);
+      padding: 0.08em 0.35em;
+      margin: 0 -0.1em;
+      border-radius: 6px 4px 7px 3px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .hl-lime {
+      background: linear-gradient(103deg, #D0E5C900 1%, #D0E5C9E6 3%, #D0E5C9B3 95%, #D0E5C900 98%);
+      padding: 0.08em 0.35em;
+      margin: 0 -0.1em;
+      border-radius: 4px 7px 5px 6px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .hl-darkblue {
+      background: linear-gradient(103deg, #89AEC900 1%, #89AEC9E6 3%, #89AEC9B3 95%, #89AEC900 98%);
+      padding: 0.08em 0.35em;
+      margin: 0 -0.1em;
+      border-radius: 5px 4px 6px 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      color: #FFF !important;
+    }
+
+    /* 紙膠帶 (Washi Tape) 樣式 */
+    .washi-tape {
+      position: absolute;
+      height: 18px;
+      width: 84px;
+      z-index: 12;
+      pointer-events: none;
+      opacity: 0.92;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      clip-path: polygon(
+        2% 0%, 98% 0%, 100% 15%, 97% 32%, 100% 50%, 97% 68%, 100% 85%, 98% 100%,
+        2% 100%, 0% 85%, 3% 68%, 0% 50%, 3% 32%, 0% 15%
+      );
+    }
+    .washi-blue-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--c-blue-light),
+        var(--c-blue-light) 6px,
+        #FFFFFF 6px,
+        #FFFFFF 12px
+      );
+    }
+    .washi-yellow-dots {
+      background-color: var(--c-yellow);
+      background-image: radial-gradient(#E2C055 1.4px, transparent 1.4px);
+      background-size: 8px 8px;
+    }
+    .washi-red-grid {
+      background-color: #F8D6D6; 
+      background-image:
+        linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px);
+      background-size: 7px 7px;
+    }
+    .washi-lime-wave {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--c-lime),
+        var(--c-lime) 6px,
+        #FDFEFB 6px,
+        #FDFEFB 12px
+      );
+    }
+    .washi-darkblue-stripe {
+      background: repeating-linear-gradient(
+        -45deg,
+        #B1CBE0, 
+        #B1CBE0 6px,
+        #F4F8FB 6px,
+        #F4F8FB 12px
+      );
+    }
+
+    /* 便利貼 (Sticky Note) 樣式 */
+    .sticky-note {
+      position: relative;
+      border-radius: 6px 6px 18px 6px;
+      box-shadow:
+        2px 5px 12px rgba(105, 96, 85, 0.08),
+        0 1px 2px rgba(105, 96, 85, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .sticky-note::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.05) 50%);
+      border-bottom-right-radius: 16px;
+      pointer-events: none;
+    }
+    .sticky-yellow {
+      background: #FDF9EA;
+      border: 1.5px solid var(--c-yellow);
+      background-image: linear-gradient(transparent 23px, #F4D67533 24px);
+      background-size: 100% 24px;
+    }
+    .sticky-blue {
+      background: #F4FAFD;
+      border: 1.5px solid var(--c-blue-light);
+      background-image: linear-gradient(transparent 23px, #E3F0F866 24px);
+      background-size: 100% 24px;
+    }
+    .sticky-red {
+      background: #FEF4F4;
+      border: 1.5px solid #E39999;
+      background-image: linear-gradient(transparent 23px, #F4BABA33 24px);
+      background-size: 100% 24px;
+    }
+    .sticky-lime {
+      background: #FAFCF8;
+      border: 1.5px solid #B8D1B0;
+      background-image: linear-gradient(transparent 23px, #D0E5C94D 24px);
+      background-size: 100% 24px;
+    }
+    .sticky-darkblue {
+      background: #F2F7FB;
+      border: 1.5px solid #9ABCE0;
+      background-image: linear-gradient(transparent 23px, #89AEC926 24px);
+      background-size: 100% 24px;
+    }
+
+    /* 拍立得照片外框 */
+    .polaroid-card {
+      background: #FFFFFF;
+      padding: 8px 8px 24px 8px;
+      border-radius: 10px;
+      border: 1.5px solid var(--c-blue-light);
+      box-shadow:
+        0 6px 16px rgba(38, 96, 164, 0.10),
+        0 1px 3px rgba(38, 96, 164, 0.06);
+      position: relative;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .polaroid-card:hover {
+      transform: scale(1.015) rotate(0deg) !important;
+    }
+
+    /* 可愛貼紙白邊立體陰影 */
+    .die-cut-sticker {
+      filter: drop-shadow(0px 2px 0px #FFFFFF)
+              drop-shadow(0px -1.5px 0px #FFFFFF)
+              drop-shadow(1.5px 0px 0px #FFFFFF)
+              drop-shadow(-1.5px 0px 0px #FFFFFF)
+              drop-shadow(0px 4px 5px rgba(70, 90, 115, 0.14));
+      user-select: none;
+    }
+
+    /* 頂部索引分頁籤 */
+    .index-tab {
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      border: 2px solid #FFFFFF;
+      border-bottom: none;
+    }
+    .index-tab.active {
+      transform: translateY(-4px);
+      box-shadow: 0 -3px 10px rgba(38, 96, 164, 0.15);
+      z-index: 10;
+    }
+
+    /* 手繪虛線時間軸 */
+    .timeline-dashed {
+      background-image: linear-gradient(to bottom, #9ABCE0 55%, rgba(255,255,255,0) 0%);
+      background-position: center;
+      background-size: 3px 12px;
+      background-repeat: repeat-y;
+    }
+
+    /* 中韓混合文字：中文用連皮吃奇異果字，韓文自動使用 Hi Melody + Jua 完整字集 */
+    .kr-text {
+      font-family: 'PopRumKiwi-Telop', 'Kiwi Maru', 'KiwiMaruGH', 'Hi Melody', 'Jua', sans-serif;
+      letter-spacing: 0.02em;
+    }
+
+    /* 純韓文放大顯示（如計程車司機卡） */
+    .kr-only-text {
+      font-family: var(--font-hand-kr);
+      letter-spacing: 0.02em;
+    }
+
+    /* 隱藏捲軸但保留滑動 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(-3deg); }
+      50% { transform: translateY(-4px) rotate(3deg); }
+    }
+    .sticker-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+    
+    /* 輔助文字色彩與背景 */
+    .text-ink { color: var(--ink-main); }
+    .text-ink-muted { color: var(--ink-muted); }
+  </style>
+</head>
+<body class="pb-24 selection:bg-[#F4D675] selection:text-white">
+
+  <!-- 頂部裝飾橫幅與 Header -->
+  <header class="max-w-xl mx-auto pt-4 px-3 sm:px-5 relative">
+    <!-- 頂部紙膠帶裝飾 -->
+    <div class="washi-tape washi-yellow-dots -top-1 left-1/2 -translate-x-1/2 -rotate-2"></div>
+
+    <div class="notebook-shell rounded-3xl p-4 sm:p-5 pl-7 sm:pl-9 border-2 border-white relative overflow-hidden">
+      <!-- 左側活頁孔裝飾 -->
+      <div class="binder-holes" aria-hidden="true">
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+      </div>
+
+      <!-- 右上角可愛迴紋針 SVG -->
+      <svg class="w-9 h-14 absolute -top-2 right-5 text-[#F4D675] rotate-6 z-20 pointer-events-none" viewBox="0 0 40 70" fill="none">
+        <path d="M14 18V48C14 55.732 20.268 62 28 62C35.732 62 42 55.732 42 48V14C42 7.92487 37.0751 3 31 3C24.9249 3 20 7.92487 20 14V45C20 48.866 23.134 52 27 52C30.866 52 34 48.866 34 45V18"
+              stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/>
+      </svg>
+
+      <!-- 頂部狀態列：旅行地點貼紙 + 試算表同步按鈕 -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3 pr-6">
+        <div class="inline-flex items-center gap-1.5 bg-[#E3F0F8] border border-white text-[#6992B2] px-3 py-1 rounded-full text-sm font-bold shadow-sm -rotate-1">
+          <span>🌊</span>
+          <span class="text-xs bg-[#F4D675] text-white px-2 py-0.5 rounded-full">5D4N</span>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <!-- 試算表同步設定按鈕 -->
+          <button onclick="openSyncModal()"
+                  class="inline-flex items-center gap-1 bg-[#FAFCF8] hover:bg-[#E9F2E4] border border-[#B8D1B0] text-[#696055] px-3 py-1 rounded-full text-xs font-bold shadow-sm transition active:scale-95">
+            <span id="syncStatusIcon">☁️</span>
+            <span id="syncStatusText">試算表同步</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 主標題區 -->
+      <div class="relative flex items-start justify-between gap-2">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-bold tracking-wide text-ink leading-snug">
+            <span class="hl-blue">釜山家族旅行</span> ✈️
+          </h1>
+          <p class="text-sm sm:text-base text-ink-muted mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>📍 廣安里・西面・影島・機張・海雲台</span>
+            <span class="hl-yellow text-white text-xs font-bold px-1 rounded-md bg-[#696055]/10">點照片放大 / 點韓文給司機看</span>
+          </p>
+        </div>
+
+        <!-- 釜山膠囊列車可愛貼紙 -->
+        <div class="die-cut-sticker sticker-float shrink-0 w-12 h-12 bg-[#E3F0F8] rounded-2xl border-2 border-white flex items-center justify-center" aria-hidden="true">
+          <span class="text-2xl leading-none">🚋</span>
+        </div>
+      </div>
+
+      <!-- 類別快速篩選條 -->
+      <div class="mt-3.5 pt-3 border-t-2 border-dashed border-[#E3F0F8] flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" id="categoryFilterBar">
+          <button onclick="setCategoryFilter('ALL')" data-cat="ALL"
+                  class="cat-chip active px-3 py-1 rounded-full text-xs font-bold border transition bg-[#89AEC9] text-white border-[#89AEC9] shadow-sm">
+            ✨ 全部行程
+          </button>
+          <button onclick="setCategoryFilter('美食')" data-cat="美食"
+                  class="cat-chip px-3 py-1 rounded-full text-xs font-bold border transition bg-[#FEF4F4] text-[#D88686] border-[#E39999]">
+            🤤 美食清單
+          </button>
+          <button onclick="setCategoryFilter('景點')" data-cat="景點"
+                  class="cat-chip px-3 py-1 rounded-full text-xs font-bold border transition bg-[#E3F0F8]/70 text-[#6992B2] border-[#E3F0F8]">
+            📸 必去景點
+          </button>
+          <button onclick="setCategoryFilter('購物')" data-cat="購物"
+                  class="cat-chip px-3 py-1 rounded-full text-xs font-bold border transition bg-[#FAFCF8] text-[#8DAA84] border-[#B8D1B0]">
+            🛍️ 逛街購物
+          </button>
+        </div>
+
+        <!-- 只看有照片切換 -->
+        <button id="photoOnlyBtn" onclick="togglePhotoOnly()"
+                class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border border-[#E3F0F8] bg-white text-ink-muted font-bold transition hover:bg-[#E3F0F8]/50">
+          <span>📷</span>
+          <span id="photoOnlyLabel">全部卡片</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 分頁索引標籤 (Day 1 ~ Day 5 + 實用小抄) -->
+  <nav class="max-w-xl mx-auto px-3 sm:px-5 mt-4 sticky top-1 z-30" aria-label="行程天數切換">
+    <div class="flex items-end gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar pt-2 px-1" id="dayTabsContainer">
+      <!-- 由 JS 動態渲染分頁標籤 -->
+    </div>
+  </nav>
+
+  <!-- 主內容頁面 -->
+  <main class="max-w-xl mx-auto px-3 sm:px-5">
+    <div class="notebook-shell rounded-b-3xl rounded-tr-3xl p-4 sm:p-6 pl-7 sm:pl-10 border-2 border-white min-h-[65vh]">
+      <!-- 左側活頁孔裝飾 -->
+      <div class="binder-holes" aria-hidden="true">
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+        <div class="binder-hole"></div>
+      </div>
+
+      <!-- 當日頂部摘要便利貼 (Sticky Note Summary) -->
+      <div id="daySummaryNote" class="mb-6"></div>
+
+      <!-- 時間軸行程清單容器 -->
+      <div id="timelineContainer" class="relative"></div>
+
+      <!-- 住宿與包車小抄專區 -->
+      <div id="infoPageContainer" class="hidden space-y-5"></div>
+    </div>
+  </main>
+
+  <!-- 底部懸浮快捷膠囊列 -->
+  <div class="fixed bottom-3 inset-x-0 z-40 px-4 pointer-events-none">
+    <div class="max-w-md mx-auto bg-white/95 backdrop-blur-md border-2 border-[#E3F0F8] rounded-full shadow-lg px-3 py-2 flex items-center justify-between gap-1 pointer-events-auto">
+      <button onclick="switchDay('Day 1')" class="bottom-nav-btn flex-1 py-1 rounded-full text-xs font-bold text-ink-muted hover:bg-[#E3F0F8]/70 transition" data-target="Day 1">D1</button>
+      <button onclick="switchDay('Day 2')" class="bottom-nav-btn flex-1 py-1 rounded-full text-xs font-bold text-ink-muted hover:bg-[#E3F0F8]/70 transition" data-target="Day 2">D2</button>
+      <button onclick="switchDay('Day 3')" class="bottom-nav-btn flex-1 py-1 rounded-full text-xs font-bold text-ink-muted hover:bg-[#E3F0F8]/70 transition" data-target="Day 3">D3</button>
+      <button onclick="switchDay('Day 4')" class="bottom-nav-btn flex-1 py-1 rounded-full text-xs font-bold text-ink-muted hover:bg-[#E3F0F8]/70 transition" data-target="Day 4">D4</button>
+      <button onclick="switchDay('Day 5')" class="bottom-nav-btn flex-1 py-1 rounded-full text-xs font-bold text-ink-muted hover:bg-[#E3F0F8]/70 transition" data-target="Day 5">D5</button>
+      <div class="w-px h-5 bg-[#E3F0F8] mx-0.5"></div>
+      <button onclick="switchDay('INFO')" class="bottom-nav-btn px-3 py-1 rounded-full text-xs font-bold bg-[#F4D675] text-white border border-[#E2C055] shadow-sm transition" data-target="INFO">
+        🚕 司機小抄/住宿
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       彈窗 1：拍立得照片放大檢視器 (Lightbox Modal)
+       ========================================================= -->
+  <div id="photoLightbox" class="fixed inset-0 z-50 bg-[#696055]/75 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closePhotoLightbox(event)">
+    <div class="bg-white rounded-2xl p-3 sm:p-4 pb-6 max-w-lg w-full shadow-2xl border-4 border-[#E3F0F8] relative transform rotate-1 transition-all" onclick="event.stopPropagation()">
+      <!-- 頂部紙膠帶 -->
+      <div class="washi-tape washi-yellow-dots -top-3 left-1/2 -translate-x-1/2 rotate-2"></div>
+
+      <button onclick="closePhotoLightbox()" class="absolute top-5 right-5 z-10 w-9 h-9 rounded-full bg-white/90 text-ink font-bold shadow-md flex items-center justify-center text-lg hover:bg-[#FEF4F4]">
+        ✕
+      </button>
+
+      <div class="rounded-xl overflow-hidden bg-[#E3F0F8]/50 min-h-[220px] max-h-[68vh] flex items-center justify-center">
+        <img id="lightboxImg" src="" alt="行程照片預覽" class="w-full h-auto max-h-[66vh] object-contain" />
+      </div>
+
+      <div class="mt-3 px-2 text-center">
+        <div id="lightboxDayBadge" class="inline-block text-xs font-bold px-3 py-0.5 rounded-full bg-[#FAFCF8] text-[#8DAA84] border border-[#B8D1B0] mb-1"></div>
+        <h3 id="lightboxTitle" class="text-xl font-bold text-ink kr-text"></h3>
+        <p id="lightboxIntro" class="text-sm text-ink-muted mt-1"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       彈窗 2：給計程車司機看韓文放大卡 (Taxi Driver Card Modal)
+       ========================================================= -->
+  <div id="taxiModal" class="fixed inset-0 z-50 bg-[#696055]/75 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeTaxiModal(event)">
+    <div class="sticky-note sticky-yellow max-w-md w-full p-5 sm:p-6 rounded-2xl border-2 border-[#E2C055] shadow-2xl relative" onclick="event.stopPropagation()">
+      <div class="washi-tape washi-blue-stripe -top-3 left-1/2 -translate-x-1/2 -rotate-1"></div>
+
+      <div class="flex items-center justify-between mb-3">
+        <span class="inline-flex items-center gap-1.5 bg-[#F4D675] text-white px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+          🚕 給計程車司機看 (<span class="kr-only-text">기사님께 보여주세요</span>)
+        </span>
+        <button onclick="closeTaxiModal()" class="w-8 h-8 rounded-full bg-white/90 text-ink font-bold flex items-center justify-center shadow-sm">
+          ✕
+        </button>
+      </div>
+
+      <p class="text-xs text-ink-muted font-bold mb-1"><span class="kr-only-text text-sm">기사님, 여기로 가주세요!</span> (司機先生，請載我們到這裡：)</p>
+
+      <div class="bg-white rounded-2xl p-4 border-2 border-dashed border-[#E3F0F8] my-2 text-center shadow-inner">
+        <div id="taxiKoreanName" class="text-3xl sm:text-4xl font-bold text-[#89AEC9] kr-only-text leading-tight break-words py-2"></div>
+        <div id="taxiChineseName" class="text-sm font-bold text-ink-muted mt-2 border-t border-slate-100 pt-2 kr-text"></div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-4">
+        <button onclick="copyTaxiText()" class="flex-1 py-2.5 px-4 bg-[#89AEC9] hover:opacity-95 text-white rounded-xl font-bold text-sm shadow-sm transition active:scale-95 flex items-center justify-center gap-1.5">
+          <span>📋</span>
+          <span id="copyTaxiBtnLabel">複製韓文店名/地名</span>
+        </button>
+        <a id="naverMapSearchLink" href="#" target="_blank" rel="noopener noreferrer"
+           class="py-2.5 px-4 bg-[#FAFCF8] hover:bg-[#F2F7F0] text-[#8DAA84] border border-[#B8D1B0] rounded-xl font-bold text-sm shadow-sm transition flex items-center justify-center gap-1">
+          <span>🗺️</span>
+          <span>Naver 地圖</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       彈窗 3：Google 試算表同步說明彈窗
+       ========================================================= -->
+  <div id="syncModal" class="fixed inset-0 z-50 bg-[#696055]/75 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeSyncModal(event)">
+    <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 border-4 border-[#E3F0F8] shadow-2xl relative" onclick="event.stopPropagation()">
+      <div class="washi-tape washi-lime-wave -top-3 left-1/2 -translate-x-1/2 rotate-1"></div>
+
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-bold text-ink flex items-center gap-1.5">
+          <span>☁️</span>
+          <span>Google 試算表即時連動設定</span>
+        </h3>
+        <button onclick="closeSyncModal()" class="w-8 h-8 rounded-full bg-slate-100 text-ink-muted font-bold flex items-center justify-center">✕</button>
+      </div>
+
+      <div class="space-y-3 text-sm text-ink-muted">
+        <div class="p-3 rounded-2xl bg-[#E3F0F8]/50 border border-[#E3F0F8]">
+          <p class="font-bold text-[#89AEC9] mb-1">✅ 已內建連結你的「釜山家族旅行 5天4夜行程表」</p>
+          <p class="text-xs leading-relaxed">
+            目前已載入你試算表中的 29 筆行程與 22 張 Google 雲端硬碟照片！若你在旅途中修改了試算表，點擊下方「立即從試算表更新」即可同步最新內容。
+          </p>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-[#FDF9EA] border border-[#E2C055]">
+          <p class="font-bold text-[#C49E33] mb-1">📸 照片顯示小提醒（Google 雲端硬碟）</p>
+          <p class="text-xs leading-relaxed">
+            網頁已自動將你的 <code class="bg-white px-1 rounded">drive.google.com/file/d/...</code> 網址轉為圖片直連格式。若某張照片沒有顯示，只要去 Google 雲端硬碟將該照片（或整個資料夾）的共用權限設為<span class="hl-red font-bold">「知道連結的任何人皆可檢視」</span>就會立刻出現囉！
+          </p>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-ink-muted mb-1">自訂發布 CSV 網址（選填，預設已自動抓取你的試算表）：</label>
+          <input id="customCsvInput" type="url" placeholder="https://docs.google.com/spreadsheets/d/.../pub?output=csv"
+                 class="w-full px-3 py-2 text-xs rounded-xl border border-[#E3F0F8] bg-white focus:outline-none focus:ring-2 focus:ring-[#89AEC9]" />
+        </div>
+
+        <div class="flex gap-2 pt-2">
+          <button onclick="syncFromGoogleSheet(true)"
+                  class="flex-1 py-2.5 px-4 bg-[#89AEC9] hover:opacity-95 text-white rounded-xl font-bold text-sm shadow-sm transition active:scale-95">
+            🔄 立即從試算表更新
+          </button>
+          <a href="https://docs.google.com/spreadsheets/d/1oLL3Wvws1lKzTuYwBEF3iiSjzEMMaStGcdaRlvWBNFU/edit"
+             target="_blank" rel="noopener noreferrer"
+             class="py-2.5 px-4 bg-[#F4D675] hover:opacity-95 text-white border border-[#E2C055] rounded-xl font-bold text-sm transition">
+            📝 打開試算表
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 輕量吐司通知 -->
+  <div id="toastBox" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden bg-[#696055] text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg border-2 border-[#E3F0F8] transition-all"></div>
+
+  <script>
+    // =========================================================
+    // 1. 試算表設定與最新完整行程資料 (同步自使用者的 Google Sheet)
+    // =========================================================
+    const SPREADSHEET_ID = '1oLL3Wvws1lKzTuYwBEF3iiSjzEMMaStGcdaRlvWBNFU';
+    const DEFAULT_GVIZ_CSV_URL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('行程總表')}`;
+
+    // 使用者試算表最新 29 筆資料 (含已更新的 22 個 Google Drive 照片網址與最新介紹文字)
+    const INITIAL_ITINERARY_DATA = [
+      {
+        day: "Day 1",
+        time: "7:55",
+        title: "搭乘華航飛往釜山（預計 11:15 抵達）",
+        category: "航班",
+        transport: "✈️ 華航直飛（07:55 起飛 ➔ 11:15 抵達金海機場）",
+        intro: "搭乘中華航空班機前往釜山金海國際機場，展開五天四夜家族之旅。",
+        image_url: ""
+      },
+      {
+        day: "Day 1",
+        time: "11:30",
+        title: "前往住宿地點寄放行李",
+        category: "住宿",
+        transport: "🚌 機場接機包車",
+        intro: "抵達金海機場出關後搭乘預約接機包車直達廣安里住宿地點，先卸下行李，展開第一天行程。",
+        image_url: ""
+      },
+      {
+        day: "Day 1",
+        time: "午餐",
+        title: "廣安里 中式料理 웃기는짬뽕",
+        category: "美食",
+        transport: "🚶 步行",
+        intro: "韓式中餐廳，招牌為韓式炒碼麵與酥脆糖醋肉、炸醬麵。",
+        image_url: "https://drive.google.com/file/d/1sYGghAyCr5BxWHSA5n5slSWnDfKOUy5g/view?usp=drive_link"
+      },
+      {
+        day: "Day 1",
+        time: "下午",
+        title: "西面、田浦洞自由活動逛逛",
+        category: "景點",
+        transport: "🚇 地鐵2號線（廣安站 ➔ 西面站/田浦站）",
+        intro: "西面是釜山最熱鬧的購物商圈，鄰近的田浦咖啡街則聚集了許多文青選物店、甜點咖啡廳與潮流小店。",
+        image_url: "https://drive.google.com/file/d/1M7NUIyxgld2rQOhF8rsbsmiDnfJOUq4K/view?usp=drive_link"
+      },
+      {
+        day: "Day 1",
+        time: "晚餐",
+        title: "烤肉 올드맨션 서면전포점",
+        category: "美食",
+        transport: "🚶 步行",
+        intro: "位於西面田浦商圈的復古韓屋烤肉店，主打熟成豬五花與豬頸肉，有專人代烤服務。",
+        image_url: "https://drive.google.com/file/d/1_eQbFG5UKRn5lJiRTs8TcmJJx4tGrkl0/view?usp=drive_link"
+      },
+      {
+        day: "Day 2",
+        time: "早餐",
+        title: "貝果 올선데이 광안점",
+        category: "美食",
+        transport: "🚶 步行",
+        intro: "廣安里人氣貝果專賣店，提供多種創意鹹甜口味的手工貝果與特製抹醬。",
+        image_url: "https://drive.google.com/file/d/1nw7SuYGDRb4wrv53BMMCi--5lHHYzl71/view?usp=drive_link"
+      },
+      {
+        day: "Day 2",
+        time: "上午",
+        title: "廣安里自由活動",
+        category: "景點",
+        transport: "🚶 步行",
+        intro: "擁有細緻白沙灘與壯麗「廣安大橋」海景的療癒海灘，沿岸有許多特色文創小店，適合散步吹海風、拍照留念。",
+        image_url: "https://drive.google.com/file/d/14cQ1LqJy13luJqD7k6E_svxGTTiWstu5/view?usp=drive_link"
+      },
+      {
+        day: "Day 2",
+        time: "午餐",
+        title: "札嘎其海鮮市場代客料理",
+        category: "美食",
+        transport: "🚇 地鐵2號線（廣安站 ➔ 西面站，轉乘地鐵1號線至札嘎其站）",
+        intro: "韓國最大的水產市場，可在1樓親自挑選新鮮活帝王蟹、鮑魚與貝類，再到2樓餐廳區由店家現煮代客料理，體驗最道地的釜山海味。",
+        image_url: "https://drive.google.com/file/d/1TAsTMIy08lMV63llzmbiPt6LhRJ6vV_P/view?usp=drive_link"
+      },
+      {
+        day: "Day 2",
+        time: "下午",
+        title: "白淺灘文化村",
+        category: "景點",
+        transport: "🚌 影島大橋站搭乘 7、71、508 路公車",
+        intro: "有「釜山聖托里尼」美譽的臨海藝術村落，依山傍海的白色小屋與彩繪階梯沿著海岸線延伸，有許多文創小店及咖啡廳。",
+        image_url: "https://drive.google.com/file/d/1AIZB546cICiqAEfQ_slBgTSB2dMZ1QAu/view?usp=drive_link"
+      },
+      {
+        day: "Day 2",
+        time: "傍晚",
+        title: "松島纜車 + 松島公園（看夕陽）",
+        category: "景點",
+        transport: "🚕 計程車",
+        intro: "搭乘「松島海上纜車」橫越海面，抵達對岸的松島龍宮雲橋與岩南公園步道。",
+        image_url: "https://drive.google.com/file/d/1OkNceHKVUssdf9d_vd9SqHmXVfzHTGXK/view?usp=drive_link"
+      },
+      {
+        day: "Day 2",
+        time: "晚餐",
+        title: "泡菜豬肉 안쪽집",
+        category: "美食",
+        transport: "🚕 搭計程車回南浦洞商圈",
+        intro: "招牌餐點將豬肉與泡菜完美結合，隨餐通常還會附上暖胃的餃子湯、海苔以及特製沾醬，最後用醬汁做炒飯收尾。",
+        image_url: "https://drive.google.com/file/d/1BL-igoFtQQCx71yZxYf2E-E_U0X9gBgP/view?usp=drive_link"
+      },
+      {
+        day: "Day 3",
+        time: "早餐",
+        title: "鬆餅 신기커피",
+        category: "美食",
+        transport: "🚶 步行",
+        intro: "廣安里咖啡廳，提供現烤鬆餅與手沖咖啡。",
+        image_url: "https://drive.google.com/file/d/1cHKGEo0UkA2sXc726pAgGskZYmCxsi5j/view?usp=drive_link"
+      },
+      {
+        day: "Day 3",
+        time: "上午",
+        title: "Arte博物館",
+        category: "景點",
+        transport: "🚌 1011號急行公車在「韓進重工業」下車後轉短程計程車",
+        intro: "沉浸式媒體藝術美術館，以「永恆的自然」為主題，透過聲光投影與香氛營造奇幻視覺震撼。",
+        image_url: "https://drive.google.com/file/d/1JpaZNK6ZAwutEqUNC4S1P-BMFpeDj6on/view?usp=drive_link"
+      },
+      {
+        day: "Day 3",
+        time: "午餐",
+        title: "豬肉湯飯 연창돼지국밥",
+        category: "美食",
+        transport: "🚕 計程車",
+        intro: "釜山必吃的靈魂美食豬肉湯飯，湯頭經長時間熬煮、醇厚鮮甜卻清爽不腥膩，搭配軟嫩豬肉片。",
+        image_url: "https://drive.google.com/file/d/1gMHfPH8DAorm8wvV0Emx1G19YnwtWwrR/view?usp=drive_link"
+      },
+      {
+        day: "Day 3",
+        time: "下午茶",
+        title: "下午茶 아게",
+        category: "美食",
+        transport: "🚕 計程車",
+        intro: "位於影島前往太宗台沿線的質感咖啡廳，大面落地窗欣賞海景。",
+        image_url: "https://drive.google.com/file/d/1b906H-uciqWJ6Yk6V0_IDK4n6qot-s3H/view?usp=drive_link"
+      },
+      {
+        day: "Day 3",
+        time: "下午",
+        title: "太宗台國家公園",
+        category: "景點",
+        transport: "🚕 計程車",
+        intro: "釜山影島最南端的天然海岸風景區，以壯觀的海蝕懸崖、茂密松林聞名。",
+        image_url: "https://drive.google.com/file/d/1x4CZGv3VdO4Xrt2zh5w8Cbw1l15Ibxso/view?usp=drive_link"
+      },
+      {
+        day: "Day 3",
+        time: "晚餐",
+        title: "醬蟹 골목게장",
+        category: "美食",
+        transport: "🚕 計程車",
+        intro: "生醃醬油螃搭配海苔與熱騰騰白飯讓人忍不住一口接一口。（有辣炒豬肉選項）",
+        image_url: "https://drive.google.com/file/d/1USdzNu2s31pcCG5uaXsX20nLtE7m0Cu3/view?usp=drive_link"
+      },
+      {
+        day: "Day 4",
+        time: "全日",
+        title: "機張一日遊（包車）",
+        category: "包車",
+        transport: "🚐 全日專屬包車",
+        intro: "今日全程包車前往釜山東海岸的「機張郡」，免去轉車奔波，輕鬆享受海景咖啡、海岸寺廟與海鮮大餐。",
+        image_url: ""
+      },
+      {
+        day: "Day 4",
+        time: "上午",
+        title: "咖啡店 카페윤",
+        category: "美食",
+        transport: "🚐 包車前往",
+        intro: "機張海岸線咖啡廳，擁有大片落地窗與戶外草坪露台，可直接眺望無敵東海海景，提供多款精緻麵包、甜點與咖啡。",
+        image_url: "https://drive.google.com/file/d/1jMfqtnKDTOlFhlgZdVMuzfHvfeIDs7BE/view?usp=drive_link"
+      },
+      {
+        day: "Day 4",
+        time: "上午",
+        title: "海東龍宮寺",
+        category: "景點",
+        transport: "🚐 包車前往",
+        intro: "韓國唯一一座建在海邊岩石上的佛寺，背山面海、波濤拍岸的景致極為壯觀，也是祈求學業、健康與平安的靈驗勝地。",
+        image_url: "https://drive.google.com/file/d/1Zy8Zh_J9i76vjYKrVid308upGDAUxJ82/view?usp=drive_link"
+      },
+      {
+        day: "Day 4",
+        time: "午餐",
+        title: "生魚片 남항횟집 기장대변항",
+        category: "美食",
+        transport: "🚐 包車前往",
+        intro: "位於機張「大邊港」旁的海鮮生魚片餐廳，漁獲新鮮現切、肉質Q彈鮮甜。（有無海鮮炒飯選項）",
+        image_url: "https://drive.google.com/file/d/1y9mLk_v6zcHrIGpHVIDYrYcK3iuHsX5_/view?usp=drive_link"
+      },
+      {
+        day: "Day 4",
+        time: "下午",
+        title: "東釜山樂天outlet",
+        category: "購物",
+        transport: "🚐 包車前往",
+        intro: "以希臘聖托里尼藍白建築為設計風格的大型暢貨中心，集結眾多國際精品、韓系服飾、運動品牌與樂天超市，好逛好買且空間寬敞。",
+        image_url: "https://drive.google.com/file/d/1nJhtTGDhRZIsLQ1t1vMf1IqzOXLQO9JH/view?usp=drive_link"
+      },
+      {
+        day: "Day 4",
+        time: "晚餐",
+        title: "烤肉 돈베기",
+        category: "美食",
+        transport: "🚐 包車前往",
+        intro: "回住宿地放完戰利品後步行至附近的韓式烤肉店，嚴選新鮮厚切豬肉，炭火烤至外皮微焦酥香、內裡多汁。(暫定吃 烤肉，有其他想吃的料理可以跟我說我找找)",
+        image_url: "https://drive.google.com/file/d/1UHEvwCxrNbfzoj5RgxTPTCiCiFFef-4D/view?usp=drive_link"
+      },
+      {
+        day: "Day 5",
+        time: "9:30",
+        title: "膠囊列車（尾浦 ➔ 青沙浦）",
+        category: "景點",
+        transport: "🚇 搭乘地鐵2號線到「中洞站」或「海雲台站」前往尾浦站",
+        intro: "復古可愛小車廂，從「尾浦站」出發沿著海岸高架軌道緩緩駛向「青沙浦站」，一路飽覽絕美海景。（車廂內可飲食，早餐可以買麵包進去吃）",
+        image_url: "https://drive.google.com/file/d/1rc9kNt-j5aKHAedtCJU7_k4wIFdk0v0o/view?usp=drive_link"
+      },
+      {
+        day: "Day 5",
+        time: "上午",
+        title: "青沙浦、海雲台逛逛",
+        category: "景點",
+        transport: "🚶 步行",
+        intro: "青沙浦擁有寧靜的小漁村風情、紅白雙燈塔與著名的「韓版灌籃高手平交道」；海雲台則有開闊沙灘與熱鬧的主街商圈，適合悠閒散步採買伴手禮。",
+        image_url: "https://drive.google.com/file/d/1rc9kNt-j5aKHAedtCJU7_k4wIFdk0v0o/view?usp=drive_link"
+      },
+      {
+        day: "Day 5",
+        time: "午餐",
+        title: "參雞湯 해운대삼계탕",
+        category: "美食",
+        transport: "🚶 步行",
+        intro: "海雲台當地老字號參雞湯店，嫩雞與人參慢火燉煮。",
+        image_url: "https://drive.google.com/file/d/1P4NhaMhflBWC8dayNAq3QfxHxSMg3BvT/view?usp=drive_link"
+      },
+      {
+        day: "Day 5",
+        time: "15:30",
+        title: "回廣安里拿行李並前往機場",
+        category: "包車",
+        transport: "🚐 預計 15:30-16:00 包車出發前往金海機場",
+        intro: "返回廣安里住宿處領取寄放行李，隨後搭乘預約包車前往釜山金海國際機場。",
+        image_url: ""
+      },
+      {
+        day: "Day 5",
+        time: "傍晚",
+        title: "機場吃晚餐、最後購物",
+        category: "購物",
+        transport: "🚶 步行",
+        intro: "抵達金海機場辦理登機託運與退稅手續，在機場餐廳享用晚餐並進行最後免稅店採買。",
+        image_url: ""
+      },
+      {
+        day: "Day 5",
+        time: "21:05",
+        title: "搭乘虎航返回桃園機場（約 22:25 抵達）",
+        category: "航班",
+        transport: "✈️ 虎航直飛（21:05 起飛 ➔ 22:25 抵達桃園機場）",
+        intro: "預計搭乘台灣虎航晚班機返回台灣桃園國際機場，結束愉快的釜山五天四夜家族旅行。",
+        image_url: ""
+      }
+    ];
+
+    // 每日主題與可愛貼紙配置
+    const DAY_META = {
+      "Day 1": {
+        label: "Day 1",
+        sub: "抵達釜山・廣安里＆西面",
+        sticker: "✈️",
+        tabBg: "bg-[#E3F0F8] text-[#6992B2]",
+        noteStyle: "sticky-blue",
+        washiStyle: "washi-blue-stripe",
+        highlight: "07:55 華航出發 ➔ 機場包車直達廣安里放行李 ➔ 炒碼麵午餐 ➔ 西面田浦逛街＆專人代烤韓屋烤肉！"
+      },
+      "Day 2": {
+        label: "Day 2",
+        sub: "廣安里・札嘎其・白淺灘・松島夕陽",
+        sticker: "🌅",
+        tabBg: "bg-[#F4D675] text-[#917621]",
+        noteStyle: "sticky-yellow",
+        washiStyle: "washi-yellow-dots",
+        highlight: "廣安里手工貝果＆看海 ➔ 札嘎其市場海鮮大餐 ➔ 影島白淺灘文化村 ➔ 松島海上纜車看夕陽 ➔ 南浦洞泡菜豬肉！"
+      },
+      "Day 3": {
+        label: "Day 3",
+        sub: "影島一日慢遊・Arte・太宗台・醬蟹",
+        sticker: "🎨",
+        tabBg: "bg-[#FEF4F4] text-[#D88686]",
+        noteStyle: "sticky-red",
+        washiStyle: "washi-red-grid",
+        highlight: "現烤鬆餅早餐 ➔ Arte 沉浸式美術館 ➔ 釜山靈魂豬肉湯飯 ➔ 海景下午茶＆太宗台 ➔ 晚餐生醃醬蟹（也有辣炒豬肉）！"
+      },
+      "Day 4": {
+        label: "Day 4",
+        sub: "機張海岸包車一日遊・龍宮寺・Outlet",
+        sticker: "🚐",
+        tabBg: "bg-[#FAFCF8] text-[#8DAA84]",
+        noteStyle: "sticky-lime",
+        washiStyle: "washi-lime-wave",
+        highlight: "今日全程專屬包車！機張海景咖啡廳 카페윤 ➔ 海東龍宮寺 ➔ 大邊港生魚片 ➔ 東釜山樂天 Outlet 採買 ➔ 厚切烤肉！"
+      },
+      "Day 5": {
+        label: "Day 5",
+        sub: "海雲台膠囊列車・青沙浦・參雞湯・返台",
+        sticker: "🚋",
+        tabBg: "bg-[#F2F7FB] text-[#89AEC9]",
+        noteStyle: "sticky-darkblue",
+        washiStyle: "washi-darkblue-stripe",
+        highlight: "09:30 尾浦膠囊列車（可帶早餐上車吃）➔ 青沙浦＆海雲台散步 ➔ 海雲台參雞湯 ➔ 15:30-16:00 包車前往機場，21:05 虎航返台！"
+      },
+      "INFO": {
+        label: "實用小抄",
+        sub: "計程車司機韓文卡・住宿・包車・航班",
+        sticker: "📌",
+        tabBg: "bg-[#F4D675] text-[#917621]",
+        noteStyle: "sticky-yellow",
+        washiStyle: "washi-yellow-dots",
+        highlight: "整理所有景點韓文對照表（搭計程車直接點開給司機看）、廣安里住宿、三趟包車與來回航班資訊。"
+      }
+    };
+
+    // 知名景點韓文對照補充表
+    const LANDMARK_KOREAN_MAP = {
+      "廣安里": "광안리해수욕장 (廣安里海水浴場)",
+      "西面、田浦洞": "서면 전포카페거리 (西面田浦咖啡街)",
+      "札嘎其海鮮市場": "자갈치시장 (札嘎其市場)",
+      "白淺灘文化村": "영도 흰여울문화마을 (影島白淺灘文化村)",
+      "松島纜車": "송도해상케이블카 (松島海上纜車)",
+      "Arte博物館": "아르떼뮤지엄 부산 (釜山 Arte Museum)",
+      "太宗台": "태종대유원지 (太宗台遊園地)",
+      "海東龍宮寺": "해동용궁사 (海東龍宮寺)",
+      "東釜山樂天outlet": "롯데프리미엄아울렛 동부산점 (東釜山樂天Outlet)",
+      "膠囊列車": "해운대블루라인파크 미포정거장 (海雲台藍線公園 尾浦站)",
+      "青沙浦": "청사포 (青沙浦)",
+      "金海機場": "김해국제공항 (釜山金海國際機場)"
+    };
+
+    // 狀態管理
+    let itineraryList = [...INITIAL_ITINERARY_DATA];
+    let currentDay = "Day 1";
+    let currentCategory = "ALL";
+    let photoOnlyMode = false;
+
+    // =========================================================
+    // 2. Google 雲端硬碟圖片網址自動轉換與多重備援機制
+    // =========================================================
+    function extractDriveFileId(url) {
+      if (!url || typeof url !== "string") return null;
+      const trimmed = url.trim();
+      const matchFileD = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (matchFileD && matchFileD[1]) return matchFileD[1];
+      const matchIdParam = trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (matchIdParam && matchIdParam[1]) return matchIdParam[1];
+      return null;
+    }
+
+    function getPrimaryImageUrl(rawUrl) {
+      if (!rawUrl || typeof rawUrl !== "string") return "";
+      const cleaned = rawUrl.trim();
+      if (!cleaned) return "";
+
+      const fileId = extractDriveFileId(cleaned);
+      if (fileId) {
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1200`;
+      }
+      return cleaned;
+    }
+
+    function handleImageError(imgEl, rawUrl, title) {
+      if (!imgEl) return;
+      const fileId = extractDriveFileId(rawUrl);
+      const currentStep = parseInt(imgEl.dataset.fallbackStep || "0", 10);
+
+      if (fileId && currentStep === 0) {
+        imgEl.dataset.fallbackStep = "1";
+        imgEl.src = `https://lh3.googleusercontent.com/d/${fileId}=w1200`;
+        return;
+      }
+
+      if (fileId && currentStep === 1) {
+        imgEl.dataset.fallbackStep = "2";
+        imgEl.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
+        return;
+      }
+
+      imgEl.onerror = null;
+      const safeTitle = encodeURIComponent((title || "釜山旅行照片").slice(0, 18));
+      imgEl.src = `https://placehold.co/800x500/E3F0F8/696055?text=${safeTitle}`;
+    }
+
+    // =========================================================
+    // 3. 螢光筆自動畫重點與韓文擷取工具 (避免同一詞彙重複套用雙色螢光筆)
+    // =========================================================
+    function replaceOutsideSpans(htmlStr, target, replacement) {
+      const parts = htmlStr.split(/(<span\b[^>]*>.*?<\/span>)/g);
+      return parts.map(part => {
+        if (part.startsWith('<span')) return part;
+        return part.replace(target, replacement);
+      }).join('');
+    }
+
+    function decorateIntroWithHighlighter(introText, index, category) {
+      if (!introText) return "";
+      let html = introText;
+
+      // 1. 將括號內的貼心備註加上柔和粉紅螢光筆
+      html = html.replace(/([（(][^）)]+[）)])/g, '<span class="hl-red font-bold">$1</span>');
+
+      // 2. 將引號「...」內的重點名詞加上單一指定螢光筆 (美食避開冷色/綠色，使用溫暖開胃的顏色)
+      let hlClasses = ['hl-yellow', 'hl-blue', 'hl-lime', 'hl-darkblue', 'hl-red'];
+      if (category === "美食") {
+        hlClasses = ['hl-yellow', 'hl-red'];
+      }
+      const chosenHl = hlClasses[index % hlClasses.length];
+      html = replaceOutsideSpans(html, /(「[^」]+」)/g, `<span class="${chosenHl} font-bold">$1</span>`);
+
+      // 3. 常見美食與必看關鍵字自動畫重點 (確保不會對已被「」框住的詞重複上色)
+      const keywords = [
+        "韓式炒碼麵", "酥脆糖醋肉", "炸醬麵", "專人代烤", "手工貝果",
+        "現煮代客料理", "泡菜", "炒飯收尾",
+        "現烤鬆餅", "豬肉湯飯", "生醃醬油螃", "無敵東海海景",
+        "鮮美", "新鮮現切", "聖托里尼藍白建築", "人參慢火燉煮"
+      ];
+      keywords.forEach((kw, kwIdx) => {
+        if (html.includes(kw)) {
+          const c = hlClasses[(index + kwIdx) % hlClasses.length];
+          html = replaceOutsideSpans(html, kw, `<span class="${c} font-bold">${kw}</span>`);
+        }
+      });
+
+      return html;
+    }
+
+    // 擷取標題中的韓文或配對知名地標韓文
+    function getKoreanForTaxi(title) {
+      if (!title) return { kr: "", zh: "" };
+      const krMatch = title.match(/[\uAC00-\uD7AF]+(?:\s+[\uAC00-\uD7AF]+)*/g);
+      if (krMatch && krMatch.length > 0) {
+        return {
+          kr: krMatch.join(" "),
+          zh: title
+        };
+      }
+      for (const [key, val] of Object.entries(LANDMARK_KOREAN_MAP)) {
+        if (title.includes(key)) {
+          return {
+            kr: val.split(" (")[0],
+            zh: val
+          };
+        }
+      }
+      return { kr: title, zh: title };
+    }
+
+    // 分類標籤配色與貼紙圖示
+    function getCategoryStyle(category) {
+      switch ((category || "").trim()) {
+        case "美食":
+          return {
+            icon: "🤤",
+            badgeBg: "bg-[#FEF4F4] text-[#D88686] border-[#E39999]",
+            cardBorder: "border-[#E39999]",
+            dotBg: "bg-[#FEF4F4] border-white",
+            washi: "washi-red-grid",
+            clipColor: "#E39999"
+          };
+        case "景點":
+          return {
+            icon: "📍",
+            badgeBg: "bg-[#E3F0F8] text-[#6992B2] border-[#E3F0F8]",
+            cardBorder: "border-[#E3F0F8]",
+            dotBg: "bg-[#E3F0F8] border-white",
+            washi: "washi-blue-stripe",
+            clipColor: "#89AEC9"
+          };
+        case "購物":
+          return {
+            icon: "🛍️",
+            badgeBg: "bg-[#FAFCF8] text-[#8DAA84] border-[#B8D1B0]",
+            cardBorder: "border-[#B8D1B0]",
+            dotBg: "bg-[#FAFCF8] border-white",
+            washi: "washi-lime-wave",
+            clipColor: "#B8D1B0"
+          };
+        case "包車":
+          return {
+            icon: "🚐",
+            badgeBg: "bg-[#F4D675] text-white border-[#E2C055]",
+            cardBorder: "border-[#F4D675]",
+            dotBg: "bg-[#F4D675] border-white",
+            washi: "washi-yellow-dots",
+            clipColor: "#F4D675"
+          };
+        case "住宿":
+          return {
+            icon: "🏠",
+            badgeBg: "bg-[#F2F7FB] text-[#89AEC9] border-[#9ABCE0]",
+            cardBorder: "border-[#9ABCE0]",
+            dotBg: "bg-[#F2F7FB] border-white",
+            washi: "washi-darkblue-stripe",
+            clipColor: "#9ABCE0"
+          };
+        case "航班":
+        default:
+          return {
+            icon: "✈️",
+            badgeBg: "bg-[#F2F7FB] text-[#89AEC9] border-[#9ABCE0]",
+            cardBorder: "border-[#E3F0F8]",
+            dotBg: "bg-[#E3F0F8] border-white",
+            washi: "washi-darkblue-stripe",
+            clipColor: "#89AEC9"
+          };
+      }
+    }
+
+    // 迴紋針 SVG 產生器
+    function renderPaperclipSvg(color, rotateCls) {
+      return `
+        <svg class="w-7 h-11 absolute -top-3 right-3 z-20 pointer-events-none ${rotateCls}" viewBox="0 0 40 70" fill="none">
+          <path d="M14 18V48C14 55.732 20.268 62 28 62C35.732 62 42 55.732 42 48V14C42 7.92487 37.0751 3 31 3C24.9249 3 20 7.92487 20 14V45C20 48.866 23.134 52 27 52C30.866 52 34 48.866 34 45V18"
+                stroke="${color}" stroke-width="4.2" stroke-linecap="round"/>
+        </svg>
+      `;
+    }
+
+    // =========================================================
+    // 4. 畫面渲染邏輯 (分頁標籤、便利貼摘要、行程卡片與司機小抄頁)
+    // =========================================================
+    function renderDayTabs() {
+      const container = document.getElementById('dayTabsContainer');
+      const keys = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "INFO"];
+
+      container.innerHTML = keys.map(dayKey => {
+        const meta = DAY_META[dayKey];
+        const isActive = currentDay === dayKey;
+        return `
+          <button onclick="switchDay('${dayKey}')"
+                  class="index-tab shrink-0 px-3.5 py-2 text-xs sm:text-sm font-bold flex items-center gap-1.5 ${meta.tabBg} ${isActive ? 'active ring-2 ring-white' : 'opacity-80 hover:opacity-100'}">
+            <span>${meta.sticker}</span>
+            <span>${meta.label}</span>
+          </button>
+        `;
+      }).join('');
+
+      document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
+        const target = btn.getAttribute('data-target');
+        if (target === currentDay) {
+          btn.classList.add('ring-2', 'ring-[#89AEC9]', 'bg-[#E3F0F8]', 'text-[#6992B2]');
+        } else {
+          btn.classList.remove('ring-2', 'ring-[#89AEC9]', 'bg-[#E3F0F8]', 'text-[#6992B2]');
+        }
+      });
+    }
+
+    function renderMainContent() {
+      const summaryEl = document.getElementById('daySummaryNote');
+      const timelineEl = document.getElementById('timelineContainer');
+      const infoPageEl = document.getElementById('infoPageContainer');
+
+      const meta = DAY_META[currentDay] || DAY_META["Day 1"];
+
+      summaryEl.innerHTML = `
+        <div class="sticky-note ${meta.noteStyle} p-4 sm:p-5 -rotate-1 relative">
+          <div class="washi-tape ${meta.washiStyle || 'washi-blue-stripe'} -top-3 left-1/2 -translate-x-1/2 rotate-1"></div>
+
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <div class="inline-flex items-center gap-1.5 font-bold text-base sm:text-lg text-ink">
+              <span class="text-xl die-cut-sticker">${meta.sticker}</span>
+              <span class="hl-yellow">${meta.label}｜${meta.sub}</span>
+            </div>
+          </div>
+          <p class="text-sm sm:text-base text-ink leading-relaxed kr-text">
+            📌 ${meta.highlight}
+          </p>
+        </div>
+      `;
+
+      if (currentDay === "INFO") {
+        timelineEl.classList.add('hidden');
+        infoPageEl.classList.remove('hidden');
+        renderInfoPage();
+        return;
+      }
+
+      infoPageEl.classList.add('hidden');
+      timelineEl.classList.remove('hidden');
+
+      const filtered = itineraryList.filter(item => {
+        const matchDay = (item.day || "").trim() === currentDay;
+        const matchCat = currentCategory === "ALL" || (item.category || "").trim() === currentCategory;
+        const matchPhoto = !photoOnlyMode || (item.image_url && item.image_url.trim() !== "");
+        return matchDay && matchCat && matchPhoto;
+      });
+
+      if (filtered.length === 0) {
+        timelineEl.innerHTML = `
+          <div class="sticky-note sticky-yellow p-6 text-center my-6">
+            <p class="text-lg font-bold text-ink">🔍 這個篩選條件下沒有對應的行程卡片喔！</p>
+            <button onclick="resetFilters()" class="mt-3 px-4 py-1.5 bg-[#89AEC9] text-white rounded-full text-xs font-bold shadow-sm">
+              顯示本日全部行程
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      function getCornerSticker(item, idx) {
+        const cat = (item.category || "").trim();
+        const title = item.title || "";
+        if (cat === "美食") {
+          if (title.includes("烤肉") || title.includes("豬肉")) return "🥩";
+          if (title.includes("海鮮") || title.includes("生魚片") || title.includes("牡蠣") || title.includes("醬蟹") || title.includes("札嘎其")) return "🦀";
+          if (title.includes("咖啡") || title.includes("下午茶")) return "☕";
+          if (title.includes("鬆餅") || title.includes("貝果")) return "🥐";
+          const foodStickers = ["🥢", "🍲", "🤤", "🍻"];
+          return foodStickers[idx % foodStickers.length];
+        } else if (cat === "購物") {
+          return "🛍️";
+        } else if (cat === "航班" || cat === "包車") {
+          return "🚌";
+        } else {
+          const attrStickers = ["🌊", "📷", "⭐", "🌸", "🐚", "🎈"];
+          return attrStickers[idx % attrStickers.length];
+        }
+      }
+
+      timelineEl.innerHTML = `
+        <div class="timeline-dashed absolute left-3.5 sm:left-4 top-4 bottom-4 w-1 pointer-events-none"></div>
+
+        <div class="space-y-6 relative">
+          ${filtered.map((item, idx) => {
+            const style = getCategoryStyle(item.category);
+            const primaryImg = getPrimaryImageUrl(item.image_url);
+            const decoratedIntro = decorateIntroWithHighlighter(item.intro, idx, item.category);
+            const taxiInfo = getKoreanForTaxi(item.title);
+            const tiltClass = idx % 2 === 0 ? "rotate-[0.4deg]" : "-rotate-[0.4deg]";
+            const photoTilt = idx % 2 === 0 ? "-rotate-1" : "rotate-1";
+            const clipRotate = idx % 2 === 0 ? "rotate-6" : "-rotate-6";
+            const stickerEmoji = getCornerSticker(item, idx);
+
+            const escapedTitle = (item.title || "").replace(/'/g, "\\'");
+            const escapedIntro = (item.intro || "").replace(/'/g, "\\'");
+            const escapedRawUrl = (item.image_url || "").replace(/'/g, "\\'");
+            const escapedKr = (taxiInfo.kr || "").replace(/'/g, "\\'");
+            const escapedZh = (taxiInfo.zh || "").replace(/'/g, "\\'");
+
+            return `
+              <div class="relative pl-10 sm:pl-12">
+                <!-- 時間軸節點小圓章 -->
+                <div class="w-7 h-7 rounded-full ${style.dotBg} border-2 shadow-md flex items-center justify-center text-xs absolute left-0.5 top-3 z-10">
+                  ${style.icon}
+                </div>
+
+                <!-- 交通方式小紙條 -->
+                ${item.transport ? `
+                  <div class="mb-2 inline-flex items-center gap-1.5 bg-[#F2F7FB] border border-dashed border-[#9ABCE0] text-[#89AEC9] px-3 py-1 rounded-xl text-xs font-bold shadow-sm">
+                    <span>${item.transport}</span>
+                  </div>
+                ` : ''}
+
+                <!-- 行程主卡片 -->
+                <article class="bg-white rounded-2xl p-4 sm:p-5 border-2 ${style.cardBorder} shadow-sm relative ${tiltClass} transition hover:shadow-md">
+                  <!-- 右上角造型迴紋針 -->
+                  ${renderPaperclipSvg(style.clipColor, clipRotate)}
+
+                  <!-- 時間與分類貼紙列 -->
+                  <div class="flex flex-wrap items-center gap-2 pr-6 mb-2">
+                    <span class="px-2.5 py-0.5 rounded-lg bg-[#F4D675] text-[#917621] font-bold text-xs sm:text-sm border border-[#E2C055]">
+                      ⏰ ${item.time || '彈性時間'}
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-bold border ${style.badgeBg}">
+                      ${style.icon} ${item.category || '行程'}
+                    </span>
+                  </div>
+
+                  <!-- 行程/餐廳主標題 -->
+                  <h2 class="text-lg sm:text-xl font-bold text-ink kr-text leading-snug mb-2">
+                    <span class="hl-blue">${item.title}</span>
+                  </h2>
+
+                  <!-- 景點/美食介紹文字 (含自動螢光筆重點) -->
+                  <p class="text-sm sm:text-base text-ink leading-relaxed mb-3 kr-text">
+                    ${decoratedIntro}
+                  </p>
+
+                  <!-- 拍立得照片區 (若有照片網址才渲染) -->
+                  ${primaryImg ? `
+                    <div class="mt-4 mb-2 px-1 sm:px-2">
+                      <div class="polaroid-card ${photoTilt} cursor-pointer group"
+                           onclick="openPhotoLightbox('${primaryImg}', '${escapedRawUrl}', '${escapedTitle}', '${escapedIntro}', '${item.day} ・ ${item.time}')">
+                        <!-- 拍立得頂部紙膠帶 -->
+                        <div class="washi-tape ${style.washi} -top-2.5 left-1/2 -translate-x-1/2 -rotate-2"></div>
+
+                        <div class="overflow-hidden rounded-md bg-[#E3F0F8]/80 aspect-[16/10] relative">
+                          <img src="${primaryImg}"
+                               alt="${item.title}"
+                               loading="lazy"
+                               onerror="handleImageError(this, '${escapedRawUrl}', '${escapedTitle}')"
+                               class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+                          <span class="absolute bottom-2 right-2 bg-black/55 text-white text-[11px] px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            🔍 點擊放大
+                          </span>
+                        </div>
+
+                        <!-- 拍立得底部手寫感小字與小貼紙 -->
+                        <div class="pt-2 px-1 flex items-center justify-between text-xs text-ink-muted">
+                          <span class="font-bold truncate kr-text">📸 ${item.title}</span>
+                          <span class="die-cut-sticker text-base leading-none">${stickerEmoji}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ` : ''}
+
+                  <!-- 卡片底部工具按鈕：給司機看韓文 / Naver Map 搜尋 -->
+                  <div class="mt-3 pt-2.5 border-t border-dashed border-[#E3F0F8] flex flex-wrap items-center justify-between gap-2">
+                    <button onclick="openTaxiModal('${escapedKr}', '${escapedZh}')"
+                            class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-xl bg-[#F4D675] hover:bg-[#E2C055] text-[#917621] border border-[#E2C055] shadow-sm transition active:scale-95">
+                      <span>🚕</span>
+                      <span>給司機看韓文</span>
+                    </button>
+
+                    <a href="https://map.naver.com/p/search/${encodeURIComponent(taxiInfo.kr)}"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-xl bg-[#E3F0F8] hover:bg-[#CDE4F7] text-[#6992B2] border border-[#CDE4F7] transition">
+                      <span>🗺️</span>
+                      <span>Naver 地圖</span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    // 渲染「實用小抄（計程車韓文卡、住宿、包車、航班）」分頁
+    function renderInfoPage() {
+      const infoPageEl = document.getElementById('infoPageContainer');
+      const placeCards = itineraryList.filter(i => i.category !== '航班' && i.category !== '包車' && i.category !== '住宿');
+
+      infoPageEl.innerHTML = `
+        <!-- 1. 航班與包車重要時間便利貼 -->
+        <div class="sticky-note sticky-blue p-4 sm:p-5 rotate-[0.4deg]">
+          <div class="washi-tape washi-yellow-dots -top-3 left-1/2 -translate-x-1/2 -rotate-1"></div>
+          <h3 class="text-lg font-bold text-ink mb-2 flex items-center gap-1.5">
+            <span>✈️</span>
+            <span class="hl-yellow text-ink">航班 ＆ 預約包車重點小抄</span>
+          </h3>
+          <ul class="space-y-2.5 text-sm text-ink kr-text">
+            <li class="bg-white/90 p-2.5 rounded-xl border border-[#E3F0F8]">
+              <span class="font-bold text-[#89AEC9]">🛫 Day 1 去程航班：</span>
+              <span class="hl-blue font-bold text-[#6992B2]">中華航空 07:55 起飛</span> ➔ 預計 11:15 抵達釜山金海機場
+            </li>
+            <li class="bg-white/90 p-2.5 rounded-xl border border-[#E3F0F8]">
+              <span class="font-bold text-[#89AEC9]">🚌 Day 1 機場接機包車：</span>
+              11:15 抵達金海機場出關後，搭乘接機包車直達<span class="hl-lime font-bold text-ink">廣安里住宿地點</span>寄放行李
+            </li>
+            <li class="bg-white/90 p-2.5 rounded-xl border border-[#E3F0F8]">
+              <span class="font-bold text-[#89AEC9]">🚐 Day 4 機張一日遊包車：</span>
+              全日包車（카페윤 ➔ 海東龍宮寺 ➔ 大邊港生魚片 ➔ 東釜山樂天 Outlet ➔ 回廣安里吃烤肉 돈베기）
+            </li>
+            <li class="bg-white/90 p-2.5 rounded-xl border border-[#E3F0F8]">
+              <span class="font-bold text-[#89AEC9]">🚐 Day 5 送機包車 ＆ 回程航班：</span>
+              <span class="hl-red font-bold text-ink">15:30 - 16:00 廣安里包車出發</span>前往金海機場 ➔ <span class="hl-yellow font-bold text-ink">台灣虎航 21:05 起飛</span>（約 22:25 抵達桃園）
+            </li>
+          </ul>
+        </div>
+
+        <!-- 2. 廣安里住宿地點小抄 -->
+        <div class="sticky-note sticky-lime p-4 sm:p-5 -rotate-[0.4deg]">
+          <h3 class="text-lg font-bold text-ink mb-2 flex items-center gap-1.5">
+            <span>🏠</span>
+            <span class="hl-lime">廣安里住宿 ＆ 給司機看韓文</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-ink-muted mb-3">
+            若逛完街要搭計程車回廣安里海灘商圈一帶，可點擊下方按鈕放大韓文給司機看：
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="openTaxiModal('광안리해수욕장', '廣安里海水浴場商圈')"
+                    class="px-3.5 py-2 bg-white rounded-xl border border-[#B8D1B0] text-xs sm:text-sm font-bold text-ink shadow-sm hover:bg-[#FAFCF8] kr-text">
+              🚕 放大顯示「광안리해수욕장 (廣安里)」
+            </button>
+            <button onclick="openTaxiModal('광안역', '地鐵廣安站 (2號線)')"
+                    class="px-3.5 py-2 bg-white rounded-xl border border-[#B8D1B0] text-xs sm:text-sm font-bold text-ink shadow-sm hover:bg-[#FAFCF8] kr-text">
+              🚇 放大顯示「광안역 (廣安站)」
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. 全行程計程車司機韓文速查表 -->
+        <div class="sticky-note sticky-yellow p-4 sm:p-5">
+          <h3 class="text-lg font-bold text-ink mb-1 flex items-center gap-1.5">
+            <span>🚕</span>
+            <span class="hl-yellow text-ink">全行程「給計程車司機看」韓文速查卡</span>
+          </h3>
+          <p class="text-xs text-ink-muted mb-3">點擊任一卡片即可全螢幕放大韓文店名／地名給司機看：</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            ${placeCards.map(item => {
+              const taxiInfo = getKoreanForTaxi(item.title);
+              const escapedKr = (taxiInfo.kr || "").replace(/'/g, "\\'");
+              const escapedZh = (taxiInfo.zh || "").replace(/'/g, "\\'");
+              return `
+                <button onclick="openTaxiModal('${escapedKr}', '${escapedZh}')"
+                        class="text-left bg-white hover:bg-[#FDF9EA] p-3 rounded-xl border border-[#E2C055] shadow-sm transition flex items-center justify-between gap-2">
+                  <div class="min-w-0">
+                    <div class="text-[11px] font-bold text-ink-muted">${item.day} ・ ${item.time}</div>
+                    <div class="font-bold text-base text-[#89AEC9] truncate kr-only-text">${taxiInfo.kr}</div>
+                    <div class="text-xs text-ink-muted truncate kr-text">${item.title}</div>
+                  </div>
+                  <span class="shrink-0 text-base bg-[#F4D675] px-2 py-1 rounded-lg border border-[#E2C055]">🚕</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // =========================================================
+    // 5. 互動控制：切換天數、類別、彈窗與 CSV 即時同步
+    // =========================================================
+    function switchDay(dayKey) {
+      currentDay = dayKey;
+      renderDayTabs();
+      renderMainContent();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-chip').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = "cat-chip active px-3 py-1 rounded-full text-xs font-bold border transition bg-[#89AEC9] text-white border-[#89AEC9] shadow-sm";
+        } else {
+          btn.className = "cat-chip px-3 py-1 rounded-full text-xs font-bold border transition bg-white text-ink-muted border-[#E3F0F8] hover:bg-[#E3F0F8]/50";
+        }
+      });
+      if (currentDay === "INFO") currentDay = "Day 1";
+      renderDayTabs();
+      renderMainContent();
+    }
+
+    function togglePhotoOnly() {
+      photoOnlyMode = !photoOnlyMode;
+      const btn = document.getElementById('photoOnlyBtn');
+      const label = document.getElementById('photoOnlyLabel');
+      if (photoOnlyMode) {
+        btn.className = "inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border border-[#E2C055] bg-[#F4D675] text-[#917621] font-bold transition shadow-sm";
+        label.textContent = "只看有照片";
+      } else {
+        btn.className = "inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border border-[#E3F0F8] bg-white text-ink-muted font-bold transition hover:bg-[#E3F0F8]/50";
+        label.textContent = "全部卡片";
+      }
+      renderMainContent();
+    }
+
+    function resetFilters() {
+      currentCategory = "ALL";
+      photoOnlyMode = false;
+      setCategoryFilter("ALL");
+      renderMainContent();
+    }
+
+    // 拍立得照片 Lightbox
+    function openPhotoLightbox(primaryUrl, rawUrl, title, intro, dayTime) {
+      const modal = document.getElementById('photoLightbox');
+      const img = document.getElementById('lightboxImg');
+      img.dataset.fallbackStep = "0";
+      img.onerror = function() {
+        handleImageError(img, rawUrl, title);
+      };
+      img.src = primaryUrl;
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightboxIntro').textContent = intro;
+      document.getElementById('lightboxDayBadge').textContent = dayTime;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closePhotoLightbox(e) {
+      const modal = document.getElementById('photoLightbox');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 計程車司機韓文放大卡
+    let activeTaxiKoreanText = "";
+    function openTaxiModal(krText, zhText) {
+      activeTaxiKoreanText = krText;
+      document.getElementById('taxiKoreanName').textContent = krText;
+      document.getElementById('taxiChineseName').textContent = zhText;
+      document.getElementById('naverMapSearchLink').href = `https://map.naver.com/p/search/${encodeURIComponent(krText)}`;
+      document.getElementById('copyTaxiBtnLabel').textContent = "複製韓文店名/地名";
+      const modal = document.getElementById('taxiModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeTaxiModal() {
+      const modal = document.getElementById('taxiModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copyTaxiText() {
+      if (!activeTaxiKoreanText) return;
+      const tempInput = document.createElement('textarea');
+      tempInput.value = activeTaxiKoreanText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        document.getElementById('copyTaxiBtnLabel').textContent = "✅ 已複製韓文！";
+        showToast(`📋 已複製：${activeTaxiKoreanText}`);
+      } catch (err) {
+        showToast("請直接長按上方韓文字複製");
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // 同步彈窗控制
+    function openSyncModal() {
+      const modal = document.getElementById('syncModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSyncModal() {
+      const modal = document.getElementById('syncModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // CSV 解析器
+    function parseCSV(csvText) {
+      const rows = [];
+      let currentRow = [];
+      let currentCell = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
+
+        if (inQuotes) {
+          if (char === '"' && nextChar === '"') {
+            currentCell += '"';
+            i++;
+          } else if (char === '"') {
+            inQuotes = false;
+          } else {
+            currentCell += char;
+          }
+        } else {
+          if (char === '"') {
+            inQuotes = true;
+          } else if (char === ',') {
+            currentRow.push(currentCell.trim());
+            currentCell = '';
+          } else if (char === '\n' || (char === '\r' && nextChar === '\n')) {
+            if (char === '\r') i++;
+            currentRow.push(currentCell.trim());
+            if (currentRow.some(cell => cell !== '')) {
+              rows.push(currentRow);
+            }
+            currentRow = [];
+            currentCell = '';
+          } else {
+            currentCell += char;
+          }
+        }
+      }
+      if (currentCell !== '' || currentRow.length > 0) {
+        currentRow.push(currentCell.trim());
+        if (currentRow.some(cell => cell !== '')) {
+          rows.push(currentRow);
+        }
+      }
+      return rows;
+    }
+
+    async function syncFromGoogleSheet(showNotification = false) {
+      const customInput = document.getElementById('customCsvInput')?.value?.trim();
+      const targetUrl = customInput || DEFAULT_GVIZ_CSV_URL;
+
+      try {
+        document.getElementById('syncStatusIcon').textContent = "⏳";
+        const res = await fetch(targetUrl, { cache: "no-store" });
+        if (!res.ok) throw new Error("無法連線至試算表");
+        const csvText = await res.text();
+        const rows = parseCSV(csvText);
+
+        if (rows.length > 1) {
+          const headers = rows[0].map(h => h.toLowerCase().trim());
+          const dayIdx = headers.indexOf('day');
+          const timeIdx = headers.indexOf('time');
+          const titleIdx = headers.indexOf('title');
+          const catIdx = headers.indexOf('category');
+          const transIdx = headers.indexOf('transport');
+          const introIdx = headers.indexOf('intro');
+          const imgIdx = headers.indexOf('image_url');
+
+          if (dayIdx !== -1 && titleIdx !== -1) {
+            const parsedItems = rows.slice(1).map(r => ({
+              day: r[dayIdx] || "",
+              time: timeIdx !== -1 ? (r[timeIdx] || "") : "",
+              title: r[titleIdx] || "",
+              category: catIdx !== -1 ? (r[catIdx] || "") : "",
+              transport: transIdx !== -1 ? (r[transIdx] || "") : "",
+              intro: introIdx !== -1 ? (r[introIdx] || "") : "",
+              image_url: imgIdx !== -1 ? (r[imgIdx] || "") : ""
+            })).filter(item => item.day && item.title);
+
+            if (parsedItems.length > 0) {
+              itineraryList = parsedItems;
+              renderMainContent();
+              document.getElementById('syncStatusIcon').textContent = "✅";
+              document.getElementById('syncStatusText').textContent = "已同步試算表";
+              if (showNotification) {
+                showToast(`✅ 成功從 Google 試算表同步 ${parsedItems.length} 筆最新行程！`);
+                closeSyncModal();
+              }
+              return;
+            }
+          }
+        }
+        throw new Error("CSV 格式未包含預期欄位");
+      } catch (err) {
+        document.getElementById('syncStatusIcon').textContent = "☁️";
+        if (showNotification) {
+          showToast("💡 目前使用內建最新試算表快照（若需即時外部連線，請在試算表點選「檔案 ➔ 共用 ➔ 發布到網路」為 CSV）");
+        }
+      }
+    }
+
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      box.textContent = msg;
+      box.classList.remove('hidden');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        box.classList.add('hidden');
+      }, 3200);
+    }
+
+    // 動態註冊 PWA Manifest，支援手機「加入主畫面」
+    function setupPWA() {
+      const manifest = {
+        name: "釜山家族旅行 5天4夜",
+        short_name: "釜山旅行",
+        start_url: "./",
+        scope: "./",
+        display: "standalone",
+        background_color: "#E3F0F8",
+        theme_color: "#E3F0F8",
+        icons: [
+          {
+            src: "https://placehold.co/192x192/E3F0F8/6992B2?text=BUSAN",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "https://placehold.co/512x512/E3F0F8/6992B2?text=BUSAN",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ]
+      };
+      const manifestURL = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifest));
+      const link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = manifestURL;
+      document.head.appendChild(link);
+    }
+
+    // 初始化啟動
+    window.addEventListener('DOMContentLoaded', () => {
+      setupPWA();
+      renderDayTabs();
+      renderMainContent();
+      syncFromGoogleSheet(false);
+    });
+  </script>
+</body>
+</html>
